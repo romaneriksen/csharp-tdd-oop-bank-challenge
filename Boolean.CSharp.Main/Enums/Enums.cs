@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Boolean.CSharp.Main
+namespace Boolean.CSharp.Main.Enums
 {
     public enum Branch
     {

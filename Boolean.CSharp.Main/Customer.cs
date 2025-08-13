@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Boolean.CSharp.Main.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Boolean.CSharp.Main
     {
         public CurrentAccount _currentAccount;
         public SavingsAccount _savingsAccount;
+        public bool _hasGoodCredit = true;
         public Customer(Branch branch) 
         {
             _currentAccount = new CurrentAccount(branch);

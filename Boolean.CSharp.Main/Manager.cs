@@ -14,9 +14,14 @@ namespace Boolean.CSharp.Main
         {
             if (customer._currentAccount.overdraftRequest)
             {
+                if (customer._hasGoodCredit)
+                {
+                    customer._currentAccount.overdraftRequest = false;
+                    customer._currentAccount.overdraft = true;
+                    customer._currentAccount.overdraftBalance = 1000;
+                }
                 customer._currentAccount.overdraftRequest = false;
-                customer._currentAccount.overdraft = true;
-                customer._currentAccount.overdraftBalance = 1000;
+
             }
         }
     }

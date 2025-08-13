@@ -1,4 +1,5 @@
 ﻿using Boolean.CSharp.Main;
+using Boolean.CSharp.Main.Enums;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

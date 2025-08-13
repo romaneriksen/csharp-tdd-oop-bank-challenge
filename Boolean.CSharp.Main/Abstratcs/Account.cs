@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Boolean.CSharp.Main.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Boolean.CSharp.Main
+namespace Boolean.CSharp.Main.Abstratcs
 {
     public abstract class Account
     {
@@ -35,7 +36,11 @@ namespace Boolean.CSharp.Main
                 Balance -= fund;
                 _history.Add((DateOnly.FromDateTime(DateTime.Today), "Withdraw", fund, Balance));
             }
-            throw new Exception("Requested amount greater than account balance - withdraw failed");
+            else
+            {
+                throw new Exception("Requested amount greater than account balance - withdraw failed");
+            }
+                
             
         }
 
