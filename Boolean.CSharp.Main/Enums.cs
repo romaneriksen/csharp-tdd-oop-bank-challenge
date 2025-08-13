@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Boolean.CSharp.Main
 {
-    public class SavingsAccount : Account
+    public enum Branch
     {
-        public SavingsAccount(Branch branch) : base(branch) { }
+        Oslo,
+        Bergen,
+        Trondheim
     }
 }

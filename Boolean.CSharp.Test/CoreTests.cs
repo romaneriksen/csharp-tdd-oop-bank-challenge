@@ -17,7 +17,7 @@ namespace Boolean.CSharp.Test
         [Test]
         public void TestCreateAccounts()
         {
-            Customer customer = new Customer();
+            Customer customer = new Customer(Branch.Oslo);
             //customer.CreateCurrentAccount();
             //customer.CreateSavingsAccount();
             Assert.That(customer._currentAccount != null);
@@ -28,7 +28,7 @@ namespace Boolean.CSharp.Test
         [Test]
         public void TestDepositAndWithdraw()
         {
-            Customer customer = new Customer();
+            Customer customer = new Customer(Branch.Oslo);
             customer.Deposit("current", 100);
             Assert.That(customer._currentAccount.Balance, Is.EqualTo(100));
             customer.Deposit("current", 300);
@@ -40,7 +40,7 @@ namespace Boolean.CSharp.Test
         [Test]
         public void TestAccountStatement() 
         {
-            Customer customer = new Customer();
+            Customer customer = new Customer(Branch.Oslo);
             customer.Deposit("current", 100);
             customer.Deposit("current", 300);
             customer.Withdraw("current", 200);

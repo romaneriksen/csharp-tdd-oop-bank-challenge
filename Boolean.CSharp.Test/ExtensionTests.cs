@@ -11,20 +11,26 @@ namespace Boolean.CSharp.Test
     [TestFixture]
     public class ExtensionTests
     {
-        private Extension _extension;
-        public ExtensionTests()
-        {
-            _extension = new Extension();
-        }
+        //private Extension _extension;
+        //public ExtensionTests()
+        //{
+        //    _extension = new Extension();
+        //}
         [Test]
-        private void TestQuestion1()
+        public void TestBalanceFromHistory()
         {
-
+            Customer customer = new Customer(Branch.Oslo);
+            customer.Deposit("current", 100);
+            customer.Deposit("current", 300);
+            customer.Withdraw("current", 200);
+            Assert.That(customer.CalculateBalance("current"), Is.EqualTo(200));
         }
-        [Test]
-        private void TestQuestion2()
-        {
 
+        [Test]
+        public void TestAssociatedBranch() 
+        {
+            Customer customer = new Customer(Branch.Oslo);
+            Assert.That(customer._currentAccount.Branch, Is.EqualTo(Branch.Oslo));
         }
     }
 }

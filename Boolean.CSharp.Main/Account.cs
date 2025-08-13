@@ -13,8 +13,14 @@ namespace Boolean.CSharp.Main
         public Guid AccountNumber { get; set; } = Guid.NewGuid();
         public string CustomerName { get; set; }
         public string CustomerCity { get; set; }
+        public Branch Branch { get; set; }
 
         public int Balance = 0;
+
+        public Account(Branch branch)
+        {
+            Branch = branch;
+        }
 
         public void Deposit(int fund)
         {
@@ -41,6 +47,18 @@ namespace Boolean.CSharp.Main
             }
 
             return sb.ToString();
+        }
+
+        public int CalculateBalance()
+        {
+            int balance = 0;
+            foreach (var item in _history)
+            {
+                int val = item.Type == "Deposit" ? item.Fund : -item.Fund;
+                balance += val;
+            }
+
+            return balance;
         }
     }
 }

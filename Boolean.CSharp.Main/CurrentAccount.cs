@@ -8,8 +8,11 @@ namespace Boolean.CSharp.Main
 {
     public class CurrentAccount : Account
     {
-        public bool overDraft { get; set; } = false;
+        public bool overdraft { get; set; } = false;
+        public bool overdraftRequest { get; set; } = false;
+        public int overdraftBalance { get; set; }
 
-        public CurrentAccount() { }
+        public CurrentAccount(Branch branch) : base(branch) { }
+        
     }
 }

@@ -10,10 +10,10 @@ namespace Boolean.CSharp.Main
     {
         public CurrentAccount _currentAccount;
         public SavingsAccount _savingsAccount;
-        public Customer() 
+        public Customer(Branch branch) 
         {
-            _currentAccount = new CurrentAccount();
-            _savingsAccount = new SavingsAccount();
+            _currentAccount = new CurrentAccount(branch);
+            _savingsAccount = new SavingsAccount(branch);
         }
     
         //public void CreateCurrentAccount()
@@ -50,6 +50,20 @@ namespace Boolean.CSharp.Main
                 return _currentAccount.GenerateStatement();
             }
             return _savingsAccount.GenerateStatement();
+        }
+
+        public int CalculateBalance(string account)
+        {
+            if (account.ToLower() == "current")
+            {
+                return _currentAccount.CalculateBalance();
+            }
+            return _savingsAccount.CalculateBalance();
+        }
+
+        public void RequestOverdraft()
+        {
+            _currentAccount.overdraftRequest = true;
         }
     }
 }
