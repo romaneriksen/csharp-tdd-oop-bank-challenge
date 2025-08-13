@@ -30,8 +30,13 @@ namespace Boolean.CSharp.Main
 
         public void Withdraw(int fund)
         {
-            Balance -= fund;
-            _history.Add((DateOnly.FromDateTime(DateTime.Today),"Withdraw", fund, Balance));
+            if (Balance > fund)
+            {
+                Balance -= fund;
+                _history.Add((DateOnly.FromDateTime(DateTime.Today), "Withdraw", fund, Balance));
+            }
+            throw new Exception("Requested amount greater than account balance - withdraw failed");
+            
         }
 
         public string GenerateStatement()

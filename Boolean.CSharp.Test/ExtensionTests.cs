@@ -32,5 +32,19 @@ namespace Boolean.CSharp.Test
             Customer customer = new Customer(Branch.Oslo);
             Assert.That(customer._currentAccount.Branch, Is.EqualTo(Branch.Oslo));
         }
+
+        [Test]
+        public void TestOverDraft() 
+        {
+            Customer customer = new Customer(Branch.Oslo);
+            Manager manager = new Manager();
+            customer.RequestOverdraft();
+            Assert.That(customer._currentAccount.overdraftRequest, Is.EqualTo(true));
+            manager.ProcessOverdraftRequest(customer);
+            Assert.That(customer._currentAccount.overdraft, Is.EqualTo(true));
+            Assert.That(customer._currentAccount.overdraftRequest, Is.EqualTo(false));
+            Assert.That(customer._currentAccount.overdraftBalance > 0);
+
+        }
     }
 }
