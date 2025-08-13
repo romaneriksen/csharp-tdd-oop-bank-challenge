@@ -10,15 +10,46 @@ namespace Boolean.CSharp.Main
     {
         public CurrentAccount _currentAccount;
         public SavingsAccount _savingsAccount;
-        public Customer() { }
-    
-        public void CreateCurrentAccount()
+        public Customer() 
         {
             _currentAccount = new CurrentAccount();
-        }
-        public void CreateSavingsAccount()
-        {
             _savingsAccount = new SavingsAccount();
+        }
+    
+        //public void CreateCurrentAccount()
+        //{
+        //    _currentAccount = new CurrentAccount();
+        //}
+        //public void CreateSavingsAccount()
+        //{
+        //    _savingsAccount = new SavingsAccount();
+        //}
+
+        public void Deposit(string account, int funds)
+        {
+            if (account.ToLower() == "current")
+            {
+                _currentAccount.Deposit(funds);
+            }
+            _savingsAccount.Deposit(funds);
+        }
+        public void Withdraw(string account, int funds)
+        {
+            if (account.ToLower() == "current")
+            {
+                _currentAccount.Withdraw(funds);
+            }
+            _savingsAccount.Withdraw(funds);
+
+        }
+
+        public string GenerateStatement(string account)
+        {
+            if (account.ToLower() == "current")
+            {
+                return _currentAccount.GenerateStatement();
+            }
+            return _savingsAccount.GenerateStatement();
         }
     }
 }
